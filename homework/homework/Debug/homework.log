@@ -1,0 +1,4 @@
+﻿  소스.cpp
+C:\Users\alstj\Documents\GitHub\C_study\homework\homework\소스.cpp(89,7): warning C4101: 'string' :참조되지 않은 지역 변수입니다.
+C:\Users\alstj\Documents\GitHub\C_study\homework\homework\소스.cpp(88,8): warning C4101: 'token' :참조되지 않은 지역 변수입니다.
+  homework.vcxproj -> C:\Users\alstj\Documents\GitHub\C_study\homework\Debug\homework.exe
