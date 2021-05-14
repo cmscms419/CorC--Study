@@ -1,1 +1,2 @@
 C:\Users\alstj\Documents\Visual Studio 2019\Project1\Debug\Project1.exe
+C:\Users\alstj\Documents\GitHub\C_study\CorC--Study\mn\Debug\Project1.exe

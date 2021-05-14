@@ -1,13 +1,6 @@
-﻿  소스.c
-C:\Users\alstj\Documents\Visual Studio 2019\Project1\소스.c(22,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\alstj\Documents\Visual Studio 2019\Project1\소스.c(35,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\alstj\Documents\Visual Studio 2019\Project1\소스.c(48,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\alstj\Documents\Visual Studio 2019\Project1\소스.c(73,26): warning C4047: '함수': 'int (*)[3]'의 간접 참조 수준이 'int **'과(와) 다릅니다.
-C:\Users\alstj\Documents\Visual Studio 2019\Project1\소스.c(73,22): warning C4024: 'YellowTable': 형식 및 실제 매개 변수 2의 형식이 서로 다릅니다.
-C:\Users\alstj\Documents\Visual Studio 2019\Project1\소스.c(74,60): warning C4047: '함수': 'int (*)[3]'의 간접 참조 수준이 'int **'과(와) 다릅니다.
-C:\Users\alstj\Documents\Visual Studio 2019\Project1\소스.c(74,56): warning C4024: 'YellowCnt': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
-C:\Users\alstj\Documents\Visual Studio 2019\Project1\소스.c(88,19): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\alstj\Documents\Visual Studio 2019\Project1\소스.c(212,19): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\alstj\Documents\Visual Studio 2019\Project1\소스.c(215,19): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\alstj\Documents\Visual Studio 2019\Project1\소스.c(225): warning C4715: 'AgainYellowTable': 모든 제어 경로에서 값을 반환하지는 않습니다.
-  Project1.vcxproj -> C:\Users\alstj\Documents\Visual Studio 2019\Project1\Debug\Project1.exe
+﻿  mn.c
+C:\Users\alstj\Documents\GitHub\C_study\CorC--Study\mn\mn.c(99,19): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\alstj\Documents\GitHub\C_study\CorC--Study\mn\mn.c(226,19): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\alstj\Documents\GitHub\C_study\CorC--Study\mn\mn.c(229,19): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\alstj\Documents\GitHub\C_study\CorC--Study\mn\mn.c(239): warning C4715: 'AgainYellowTable': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  Project1.vcxproj -> C:\Users\alstj\Documents\GitHub\C_study\CorC--Study\mn\Debug\Project1.exe

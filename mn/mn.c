@@ -11,19 +11,20 @@
 #define INDEXMAX 3
 #define MAXLOOP 10
 
-void YellowTable(int yellow, int tile[][INDEXMAX], int m, int n);
-int YellowCnt(int tile[][INDEXMAX], int m, int n);
-int AgainYellowTable(int MYellowcheck, int NYellowcheck, int tile[][INDEXMAX]);
-int SquareCheck(int tile[][INDEXMAX], int m, int n);
+void YellowTable(int yellow, int *tile[], int m, int n);
+int YellowCnt(int* tile[], int m, int n);
+int AgainYellowTable(int MYellowcheck, int NYellowcheck, int* tile[]);
+int SquareCheck(int* tile[], int m, int n);
 int Max(int a, int b);
 
 int main()
 {
-	srand(time(NULL));
+	srand((unsigned int)time(NULL));
 	int m = rand() % INDEXMAX;
+
 	while (1)
 	{
-		if (m > INDEXMAX)
+		if (m > INDEXMAX || m <= 0)
 		{
 			srand((int)time(NULL));
 			m = rand() % INDEXMAX + 1;
@@ -32,11 +33,12 @@ int main()
 			break;
 	}
 
-	srand(time(NULL));
+	srand((unsigned int)time(NULL));
 	int n = rand() % INDEXMAX;
+
 	while (1)
 	{
-		if (n > INDEXMAX)
+		if (n > INDEXMAX || n <= 0)
 		{
 			srand((int)time(NULL));
 			n = rand() % INDEXMAX + 1;
@@ -44,9 +46,10 @@ int main()
 		else
 			break;
 	}
-	
-	srand(time(NULL));
+
+	srand((unsigned int)time(NULL));
 	int yellow = (m * n) - (rand() % (m * n));
+
 	while (1)
 	{
 		if (yellow > m * n)
@@ -62,8 +65,12 @@ int main()
 	int MYellowcheck = 0;
 	int NYellowcheck = 0;
 
-	int** tile = (int**)calloc(m * n, sizeof(int));
-	
+	int** tile = (int**)calloc(m, sizeof(int));
+	for (int i = 0; i < m; i++)
+	{
+		tile[i] = (int*)calloc(n, sizeof(int *));
+	}
+
 	if (yellow <= 0)
 	{
 		printf("Don't have Yellow\n");
@@ -73,11 +80,16 @@ int main()
 	YellowTable(yellow, tile, m, n);
 	printf("정사각형의 최대 개수: %d", YellowCnt(tile, m, n));
 
+	for (int i = 0; i < n; i++)
+	{
+		free(tile[i]);
+	}
+	free(tile);
  	return 0;
 }
 
 
-void YellowTable(int yellow, int tile[][INDEXMAX],int m, int n)
+void YellowTable(int yellow, int *tile[],int m, int n)
 {
 
 	int MYellowcheck = 0;
@@ -122,7 +134,7 @@ void YellowTable(int yellow, int tile[][INDEXMAX],int m, int n)
 	}
 }
 
-int YellowCnt(int tile[][INDEXMAX], int m, int n)
+int YellowCnt(int *tile[], int m, int n)
 {
 	int check[INDEXMAX][INDEXMAX] = { 0, };
 	int Ycnt = 0;
@@ -131,10 +143,10 @@ int YellowCnt(int tile[][INDEXMAX], int m, int n)
 	{
 		for (int k = 0; k < n; k++)
 		{
-			Ycnt = SquareCheck(tile, i, k);
-			
+			Ycnt = BLACK;
 			if (tile[i][k] == YELLOW)
 			{
+				Ycnt = SquareCheck(tile, i, k);
 				if (i != 0 && k != 0) 
 				{
 					if (check[i - 1][k - 1] < Ycnt)
@@ -168,17 +180,23 @@ int YellowCnt(int tile[][INDEXMAX], int m, int n)
 	return check[m - 1][n - 1];
 }
 
-int SquareCheck(int tile[][INDEXMAX],int m, int n)
+int SquareCheck(int *tile[],int m, int n)
 {
 
-	int cnt = 1;
-	int length = 1; // (m, n) 좌표의 반대편에 있는 좌표를 찾아준다.
+	int cnt = 0;
+	int length = 0; // (m, n) 좌표의 반대편에 있는 좌표를 찾아준다.
 
 	while (1)
 	{
-		if (tile[m - length][n - length] == YELLOW) 
+		cnt++;
+		length++;
+		if (m - length < 0 || n - length < 0)
 		{
-			for (int i = m - length; i >= m; i--)
+			return cnt;
+		}
+		else if (tile[m - length][n - length] == YELLOW) 
+		{
+			for (int i = m - length; i <= m; i++)
 			{
 				if (tile[i][n - length] == BLACK)
 				{
@@ -186,7 +204,7 @@ int SquareCheck(int tile[][INDEXMAX],int m, int n)
 				}
 			}
 
-			for (int i = n - length; i >= n; i--)
+			for (int i = n - length; i <= n; i++)
 			{
 				if (tile[m - length][i] == BLACK)
 				{
@@ -198,13 +216,10 @@ int SquareCheck(int tile[][INDEXMAX],int m, int n)
 		{
 			return cnt;
 		}
-
-		cnt++;
-		length++;
 	}
 }
 
-int AgainYellowTable(int MYellowcheck, int NYellowcheck, int tile[][INDEXMAX])
+int AgainYellowTable(int MYellowcheck, int NYellowcheck, int *tile[])
 {
 
 	for (int i = 0; i < MAXLOOP; i++)
