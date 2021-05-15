@@ -1,11 +1,9 @@
 #include <stdio.h>
 
-#define MAX 16
 #define SIZE 8
 #define FALSE 0
 #define TRUE 1
 #define _CRT_SECURE_NO_WARNINGS
-
 
 typedef struct
 {
@@ -20,8 +18,8 @@ typedef struct
 	int array[SIZE];
 }subcost;
 
-void init_distance(int distance[], int size);
 int choose(int distance[], int n, int knowDistance[]);
+void init_distance(int distance[], int size);
 void find_dikstra(cost* ospf, cost* sub_ospf, int start, int end);
 void trace_path(int start, int end, subcost* router);
 void printf_start_end(int s, int e, subcost* router, int distance);
@@ -29,10 +27,10 @@ void printf_start_end(int s, int e, subcost* router, int distance);
 int distance[SIZE]; // 시작정점으로부터의 최단경로 거리
 int knowDistance[SIZE]; // 방문한 정점 표시
 int step = 1; // 출력이 몇번 되었는지 확인하는 용도
-cost sub_ospf = { SIZE, };
 
 int main(void)
 {
+	cost sub_ospf = { SIZE, };
 	cost ospf = { SIZE,
 			{
 				{0, 2, 16, 16, 16, 3, 16, 16},
@@ -52,16 +50,22 @@ int main(void)
 	{
 		printf("시작 라우터와 도착 라우터 입력\n");
 		printf("종료는 0\n");
-		scanf_s("%d %d", &start, &end);
-		if (start < 0 || end < 0)
+		
+		scanf_s("%d", &start);
+		if (start < 0)
 		{
 			return 0;
 		}
+
+		scanf_s("%d", &end);
+		if (end < 0)
+		{
+			return 0;
+		}
+
 		find_dikstra(&ospf, &sub_ospf, start - 1, end - 1);
 	}
 	
-
-	find_dikstra(&ospf, &sub_ospf, 5, 4);
 	return 0;
 }
 
@@ -139,6 +143,7 @@ void find_dikstra(cost *ospf,cost* sub_ospf, int start, int end)
 	printf_start_end(router.start, router.end, &router, distance[end]);
 }
 
+/*끝 라우터 부터 재귀함수 순으로 되돌아가는 순서*/
 void trace_path(int start, int end, subcost *router)
 {
 	if (start == end)
