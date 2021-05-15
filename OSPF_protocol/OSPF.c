@@ -17,18 +17,19 @@ typedef struct
 {
 	int start;
 	int end;
-	int cnt;
 	int array[SIZE];
 }subcost;
 
-void dikstra(cost* ospf_d, cost* ospf, int start, int end);
-void init(int distance[], int size);
+void init_distance(int distance[], int size);
 int choose(int distance[], int n, int knowDistance[]);
+void find_dikstra(cost* ospf, cost* sub_ospf, int start, int end);
+void trace_path(int start, int end, subcost* router);
+void printf_start_end(int s, int e, subcost* router, int distance);
 
 int distance[SIZE]; // 시작정점으로부터의 최단경로 거리
 int knowDistance[SIZE]; // 방문한 정점 표시
-subcost dis; // 1. 시작 라우터, 2. 마지막 라우터, 3 라우터의 경로
 int step = 1; // 출력이 몇번 되었는지 확인하는 용도
+cost sub_ospf = { SIZE, };
 
 int main(void)
 {
@@ -44,21 +45,28 @@ int main(void)
 				{16, 16, 16, 16, 4, 16, 4, 0}
 			}
 	};
-
-	cost ospf_d = { SIZE, }; // 각 라우터들의 최소 비용 값을 저장한다.
-
-
-	int n = 0;
-
-	printf("%d 번째\n", 1);
-	dikstra(&ospf_d, &ospf, 1, 3);
+	int start = 0;
+	int end = 0;
+	
+	while (1)
+	{
+		printf("시작 라우터와 도착 라우터 입력\n");
+		printf("종료는 0\n");
+		scanf_s("%d %d", &start, &end);
+		if (start < 0 || end < 0)
+		{
+			return 0;
+		}
+		find_dikstra(&ospf, &sub_ospf, start - 1, end - 1);
+	}
 	
 
+	find_dikstra(&ospf, &sub_ospf, 5, 4);
 	return 0;
 }
 
 //distance 배열을 초기화 시켜준다.
-void init(int distance[], int size)
+void init_distance(int distance[], int size)
 {
 	for (int i = 0; i < size; i++)
 	{
@@ -66,57 +74,7 @@ void init(int distance[], int size)
 	}
 }
 
-//Diskatra 알고리즘
-void dikstra(cost * ospf_d, cost* ospf, int start, int end)
-{
-	int lowdistance = 0;
-	
-	dis.start = start;
-	dis.end = end;
-	dis.cnt = 0;
-	dis.array[dis.cnt++] = start;
-
-	for (int i = 0; i < ospf->n; i++)
-	{
-		distance[i] = ospf->protocol[start][i];
-		knowDistance[i] = FALSE;
-	}
-
-	int a = distance[end];
-	knowDistance[start] = TRUE;
-	distance[start] = 0;
-
-	for (int i = 0; i < ospf->n; i++)
-	{
-		a = distance[end];
-		lowdistance = choose(distance, ospf->n, knowDistance);
-		knowDistance[lowdistance] = TRUE;
-
-		for (int m = 0; m < ospf->n; m++)
-		{
-			if (!knowDistance[m])
-			{
-				if ((distance[lowdistance] + ospf->protocol[lowdistance][m]) < distance[m])
-				{
-					distance[m] = distance[lowdistance] + ospf->protocol[lowdistance][m];
-				}
-			}
-		}
-
-
-		if (distance[end] < a)
-		{
-			dis.array[dis.cnt++] = lowdistance;
-		}
-	}
-	for (int i = 0; i < SIZE; i++)
-	{
-		ospf_d->protocol[start][i] = distance[i];
-	}
-
-}
-
-// 아직 발견하지 못한 정점 중에서 제일 비용이 낮은 곳을 반환해 준다.
+// 아직 발견하지 못한 정점 중에서 제일 비용이 낮은 곳을 반환해 준다. 
 int choose(int distance[], int n, int knowDistance[])
 {
 	int minpos = -1;
@@ -132,4 +90,75 @@ int choose(int distance[], int n, int knowDistance[])
 	}
 
 	return minpos;
+}
+
+//Diskatra 알고리즘
+void find_dikstra(cost *ospf,cost* sub_ospf, int start, int end)
+{
+	int lowdistance = 0;
+	subcost router;
+	
+	router.start = start;
+	router.end = end;
+
+	for (int i = 0; i < SIZE; i++)
+	{
+		router.array[i] = start;
+	}
+
+	init_distance(distance, SIZE);
+
+	for (int i = 0; i < ospf->n; i++)
+	{
+		distance[i] = ospf->protocol[start][i];
+		knowDistance[i] = FALSE;
+	}
+
+	knowDistance[start] = TRUE;
+	distance[start] = 0;
+
+	for (int i = 0; i < ospf->n - 1; i++)
+	{
+		lowdistance = choose(distance, ospf->n, knowDistance);
+		knowDistance[lowdistance] = TRUE;
+
+		for (int m = 0; m < ospf->n; m++)
+		{
+			if (!knowDistance[m])
+			{
+				if ((distance[lowdistance] + ospf->protocol[lowdistance][m]) < distance[m])
+				{
+					distance[m] = distance[lowdistance] + ospf->protocol[lowdistance][m];
+					router.array[m] = lowdistance;
+				}
+			}
+		}
+
+
+	}
+	printf_start_end(router.start, router.end, &router, distance[end]);
+}
+
+void trace_path(int start, int end, subcost *router)
+{
+	if (start == end)
+	{
+		return;
+	}
+
+	trace_path(start, router->array[end], router);
+	printf("%d -> ", router->array[end] + 1);
+}
+
+void printf_start_end(int s, int e, subcost* router, int distance)
+{
+	if (router->array[e] != 0)
+	{
+		trace_path(s, e, router);
+	}
+	else
+	{
+		printf("%d -> ", s + 1);
+	}
+	printf("%d / Cost : %d\n", e + 1, distance);
 }
