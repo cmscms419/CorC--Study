@@ -88,7 +88,6 @@ int main()
  	return 0;
 }
 
-
 void YellowTable(int yellow, int *tile[],int m, int n)
 {
 
