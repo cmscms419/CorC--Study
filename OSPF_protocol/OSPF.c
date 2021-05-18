@@ -49,7 +49,7 @@ int main(void)
 	while (1)
 	{
 		printf("시작 라우터와 도착 라우터 입력\n");
-		printf("종료는 0\n");
+		printf("종료는 0 미만 입력\n");
 		
 		scanf_s("%d", &start);
 		if (start < 0)
