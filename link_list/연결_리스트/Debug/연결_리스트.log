@@ -1,0 +1,6 @@
+﻿  소스.c
+c:\users\minseok\documents\visual studio 2015\projects\연결_리스트\연결_리스트\소스.c(19): warning C4133: '=': 'ListNode *'과(와) 'ListNode *' 사이의 형식이 호환되지 않습니다.
+c:\users\minseok\documents\visual studio 2015\projects\연결_리스트\연결_리스트\소스.c(28): warning C4133: '=': 'ListNode *'과(와) 'ListNode *' 사이의 형식이 호환되지 않습니다.
+c:\users\minseok\documents\visual studio 2015\projects\연결_리스트\연결_리스트\소스.c(35): warning C4133: '=': 'ListNode *'과(와) 'ListNode *' 사이의 형식이 호환되지 않습니다.
+  연결_리스트.vcxproj -> c:\users\minseok\documents\visual studio 2015\Projects\연결_리스트\Debug\연결_리스트.exe
+  연결_리스트.vcxproj -> c:\users\minseok\documents\visual studio 2015\Projects\연결_리스트\Debug\연결_리스트.pdb (Full PDB)
