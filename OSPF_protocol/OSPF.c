@@ -33,14 +33,14 @@ int main(void)
 	cost sub_ospf = { SIZE, };
 	cost ospf = { SIZE,
 			{
-				{0, 2, 16, 16, 16, 3, 16, 16},
-				{2, 0, 1, 4, 16, 16, 16, 16},
-				{16, 1, 0, 16, 3, 16, 16, 16},
-				{16, 4, 16, 0, 3, 16, 2, 16},
-				{16, 16, 3, 3, 0, 16, 16, 4},
-				{3, 16, 16, 16, 16, 0, 6, 16},
-				{16, 16, 16, 2, 16, 6, 0, 4},
-				{16, 16, 16, 16, 4, 16, 4, 0}
+				{0, 4, 16, 16, 16, 7, 16, 16},
+				{4, 0, 8, 16, 16, 16, 16, 2},
+				{16, 8, 0, 5, 7, 16, 16, 16},
+				{16, 16, 5, 0, 4, 16, 16, 6},
+				{16, 16, 7, 4, 0, 16, 3, 3},
+				{7, 16, 16, 16, 16, 0,3, 5},
+				{16 ,16 ,16 ,16, 3, 3, 0, 6},
+				{16, 2 ,16, 6, 3, 5, 6, 0 }
 			}
 	};
 	int start = 0;
@@ -155,8 +155,10 @@ void trace_path(int start, int end, subcost *router)
 	printf("%d -> ", router->array[end] + 1);
 }
 
+// ospf Ãâ·Â
 void printf_start_end(int s, int e, subcost* router, int distance)
 {
+	printf("%d/", distance);
 	if (router->array[e] != 0)
 	{
 		trace_path(s, e, router);
@@ -165,5 +167,5 @@ void printf_start_end(int s, int e, subcost* router, int distance)
 	{
 		printf("%d -> ", s + 1);
 	}
-	printf("%d / Cost : %d\n", e + 1, distance);
+	printf("%d/\n", e + 1);
 }
