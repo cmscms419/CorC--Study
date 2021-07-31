@@ -1,0 +1,4 @@
+﻿  소스.cpp
+c:\users\minseok\documents\visual studio 2015\projects\534-07\534-07\소스.cpp(19): warning C4552: '>>': 의미 없는 연산자입니다. 파생 작업이 있는 연산자여야 합니다.
+  534-07.vcxproj -> c:\users\minseok\documents\visual studio 2015\Projects\534-07\Debug\534-07.exe
+  534-07.vcxproj -> c:\users\minseok\documents\visual studio 2015\Projects\534-07\Debug\534-07.pdb (Full PDB)

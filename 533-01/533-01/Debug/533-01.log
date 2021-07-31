@@ -1,0 +1,6 @@
+﻿  소스.c
+c:\users\minseok\documents\visual studio 2015\projects\533-01\533-01\소스.c(7): warning C4013: 'gets'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+c:\users\minseok\documents\visual studio 2015\projects\533-01\533-01\소스.c(8): warning C4013: 'mastrlen'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+c:\users\minseok\documents\visual studio 2015\projects\533-01\533-01\소스.c(9): warning C4013: 'strlen'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+  533-01.vcxproj -> C:\Users\minseok\documents\visual studio 2015\Projects\533-01\Debug\533-01.exe
+  533-01.vcxproj -> C:\Users\minseok\documents\visual studio 2015\Projects\533-01\Debug\533-01.pdb (Full PDB)

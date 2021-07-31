@@ -1,0 +1,5 @@
+﻿  소스.cpp
+c:\users\minseok\documents\visual studio 2015\projects\488-6\488-6\소스.cpp(19): warning C4244: 'return': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\minseok\documents\visual studio 2015\projects\488-6\488-6\소스.cpp(23): warning C4244: 'return': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  488-6.vcxproj -> c:\users\minseok\documents\visual studio 2015\Projects\488-6\Debug\488-6.exe
+  488-6.vcxproj -> c:\users\minseok\documents\visual studio 2015\Projects\488-6\Debug\488-6.pdb (Full PDB)

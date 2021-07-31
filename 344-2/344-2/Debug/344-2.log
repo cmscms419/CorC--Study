@@ -1,0 +1,4 @@
+﻿  소스.cpp
+c:\users\john\documents\visual studio 2015\projects\344-2\344-2\소스.cpp(13): warning C4244: '+=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  344-2.vcxproj -> C:\Users\John\documents\visual studio 2015\Projects\344-2\Debug\344-2.exe
+  344-2.vcxproj -> C:\Users\John\documents\visual studio 2015\Projects\344-2\Debug\344-2.pdb (Full PDB)

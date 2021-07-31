@@ -1,0 +1,2 @@
+﻿  소스.cpp
+c:\users\minseok\documents\visual studio 2015\projects\574-2\574-2\소스.cpp(5): error C4700: 초기화되지 않은 'm' 지역 변수를 사용했습니다.

@@ -1,0 +1,5 @@
+﻿1>------ 빌드 시작: 프로젝트: ConsoleApplication2, 구성: Debug Win32 ------
+1>  gyg.cpp
+1>  ConsoleApplication2.vcxproj -> C:\Users\minseok\documents\visual studio 2015\Projects\ConsoleApplication2\Debug\ConsoleApplication2.exe
+1>  ConsoleApplication2.vcxproj -> C:\Users\minseok\documents\visual studio 2015\Projects\ConsoleApplication2\Debug\ConsoleApplication2.pdb (Full PDB)
+========== 빌드: 성공 1, 실패 0, 최신 0, 생략 0 ==========
