@@ -6,8 +6,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct {
-	char key[5];
+typedef struct 
+{
+	char key[10];
 	char value[100];
 }element;
 
@@ -22,10 +23,9 @@ int sizeUp(element ht[], int size);
 void hash_search(element search, element ht[], int size);
 void init_table(element ht[], int size);
 
-
 int main()
 {
-	FILE *f; // 파일
+	FILE *f = NULL; // 파일
 	element search; // 검색 받는 요소
 	element e; // 입력 받는 요소
 
@@ -66,7 +66,7 @@ int main()
 	for (int i = 0; i < 5; i++)
 	{
 		printf("%d 번쨰 검색: ", i + 1);
-		scanf("%s", search.key);
+		scanf(" %[^\n]", search.key);
 
 		hash_search(search, hash_table, table_size);
 	}
@@ -89,8 +89,6 @@ int trandsform(char *key) {
 	char string[10];
 	int number = 0;
 	int cnt = 0;
-	
-	strtok(key, " ");
 
 	while (key[cnt] != 32 && key[cnt] != NULL && key[cnt] != 40)
 	{
